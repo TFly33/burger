@@ -1,12 +1,12 @@
 // Functions I'll be using: 
 
-selectAll();
-insertOne();
-updateOne();
+// selectAll();
+// insertOne();
+// updateOne();
 
 
 
 
 
 
-module.exports = orm;
+// module.exports = orm;
