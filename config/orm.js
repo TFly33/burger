@@ -1,7 +1,7 @@
 var connection = require("../config/connection.js");
 
 
-// Let's use this helper. It'll turn the input's into an array that includes strings. 
+// Let's have this helper in case we decide to use it. Not using it for now. It'll turn the input's into an array that includes strings. 
 function printQuestionMarks(num) {
     var arr = [];
 
@@ -43,7 +43,19 @@ var orm = {
             cb(result);
         });
     },
+    // HOW DO I PASS THE VALUE OF THE USER'S INPUT INTO THIS SLOT FOR VALUE?????
+    insertOne: function(val, cb) {
+        connection.query("INSERT INTO burgers (burger_name, devoured) VALUES " + (val, true), function(err,result) {
+            if (err) {
+                throw err;
+            }
+
+            cb(result);
+        }); 
+    }
 };
+
+
 
 
 
