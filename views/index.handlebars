@@ -4,7 +4,7 @@
 
 <div class="newBurgers">
     <ol>
-        {{#each burger}}
+        {{#each burgers}}
         {{#unless devoured}}
         {{> burgers/burger-block devoured=false}}
         {{/unless}}
@@ -16,10 +16,10 @@
 
 <div class="oldBurgers">
     <ol>
-        {{#each burger}}
-        {{#if devoured=true}}
+        {{#each burgers}}
+        {{!-- {{#if devoured=true}}
         {{> burgers/burger-block devoured=true}}
-        {{/if}}
+        {{/if}} --}}
         {{/each}}
     </ol>
 </div>
