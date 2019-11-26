@@ -14,20 +14,21 @@ router.get("/", function (req, res) {
             burgers: data
         };
         console.log(hbsObject);
-        // Should this be index???
+        // THIS IS GOING TO THE INDEX OF HANDLEBARS 
         res.render("index", hbsObject)
     })
 
 })
 
-router.post("/", function (req, res) {
-    burger.insertOne([
-        "name"
+router.post("/api/burgers", function (req, res) {
+    burger.create([
+        "burger_name", "devoured"
     ], [
-            req.body.name
+            req.body.burger_name,
+            false
         ], function (result) {
             // Send back the name of the new burger. Nothing to post here really. 
-            res.json({ result });
+            res.json({ id: result.insertId });
         
     });
 });

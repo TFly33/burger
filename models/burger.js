@@ -15,10 +15,10 @@ var burger = {
 
     // STILL NEED TO FIX THE NEXT TWO
     // What am I passing through the function? I understand the orm part of it, but don't think I understand the top part. 
-    insertOne:function (cols, vals, cb) {
-        orm.insertOne(val, function(res) {
+    create:function (cols, vals, cb) {
+        orm.create("burgers", cols, vals, function(res) {
             cb(res);
-            console.log("The insertOne pass from burger.js to the ORM is working.")
+            console.log("The create pass from burger.js to the ORM is working.")
         });
     },
 

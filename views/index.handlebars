@@ -2,31 +2,35 @@
 
 <h2 class="">Burgers that are not devoured!</h2>
 
-<ol>
-  {{#each burger}}
-      {{> burgers/burger-block}}
-  {{/each}}
-</ol>
+<div class="newBurgers">
+    <ol>
+        {{#each burger}}
+        {{#unless devoured}}
+        {{> burgers/burger-block devoured=false}}
+        {{/unless}}
+        {{/each}}
+    </ol>
+</div>
 
 <h2>Burgers that are devoured!</h2>
 
-<ol>
-  {{#each burger}}
-    {{#if devoured=true}}
-      {{> burgers/burger-block devoured=true}}
-    {{/if}}
-  {{/each}}
-</ol>
+<div class="oldBurgers">
+    <ol>
+        {{#each burger}}
+        {{#if devoured=true}}
+        {{> burgers/burger-block devoured=true}}
+        {{/if}}
+        {{/each}}
+    </ol>
+</div>
 
 <h2>Add a Burger</h2>
 <form class="create-form">
 
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" class="burgerName" name="name">
-  </div>
+    <div class="form-group">
+        <label for="ca">Burger Name:</label>
+        <input type="text" class="burgerName" name="name">
+    </div>
 
-  <button type="submit" class="addBurger">Add Burger</button>
+    <button type="submit" class="addBurger">Add Burger</button>
 </form>
-
-

@@ -36,7 +36,7 @@ function objtoSql(ob) {
 var orm = {
     selectAll: function (burgerInput, cb) {
         var queryString = "SELECT * FROM " + burgerInput + ";";
-        connection.query(queryString, function(err, result) {
+        connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }
@@ -44,15 +44,36 @@ var orm = {
         });
     },
     // HOW DO I PASS THE VALUE OF THE USER'S INPUT INTO THIS SLOT FOR VALUE?????
-    insertOne: function(val, cb) {
-        connection.query("INSERT INTO burgers (burger_name, devoured) VALUES " + (val, true), function(err,result) {
-            if (err) {
-                throw err;
-            }
+    // create: function (col, val, cb) {
+    //     connection.query("INSERT INTO burgers (burger_name, devoured) VALUES " + (col, val), function (err, result) {
+    //         if (err) {
+    //             throw err;
+    //         }
 
-            cb(result);
-        }); 
-    }
+    //         cb(result);
+    //     });
+    // }
+
+    create: function(table, cols, vals, cb) {
+        var queryString = "INSERT INTO " + table;
+    
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") ";
+    
+        console.log(queryString);
+    
+        connection.query(queryString, vals, function(err, result) {
+          if (err) {
+            throw err;
+          }
+    
+          cb(result);
+        });
+      },
 };
 
 
