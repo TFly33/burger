@@ -16,8 +16,46 @@ $(function () {
             type: "POST",
             data: newBurger
         }).then(
-            function() {
+            function () {
                 console.log("new burger added");
+                location.reload();
+            }
+        );
+
+    });
+    $(".changeDevoured").on("click", function (event) {
+        event.preventDefault();
+
+        var id = $(this).data("id");
+        var newDevouredState = {
+            devoured: true
+        }
+
+        // And here we will post it. 
+        // The idea is to change the devoured state to true. 
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: newDevouredState
+        }).then(
+            function () {
+                console.log("the burger was devoured!");
+                location.reload();
+            }
+        );
+
+    });
+    $(".deleteBurger").on("click", function (event) {
+        event.preventDefault();
+
+        var id = $(this).data("id");
+
+        // And here we will post it. 
+        // The idea is to change the devoured state to true. 
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE"
+        }).then(
+            function () {
+                console.log("the burger was devoured!");
                 location.reload();
             }
         );
@@ -25,32 +63,3 @@ $(function () {
     })
 
 })
-
-
-// Here is the code to devour the burger. 
-// $(function () {
-//     $(".changeDevoured").on("click", function (event) {
-//         event.preventDefault();
-
-//         var id = $(this).date("id");
-//         var newDevouredState = {
-//             devoured: true
-//         }
-        
-//         console.log("Moving the burger with this: " + newBurger.name);
-
-//         // And here we will post it. 
-//         // The idea is to change the devoured state to true. 
-//         $.ajax("/", {
-//             type: "PUT",
-//             data: newDevouredState
-//         }).then(
-//             function() {
-//                 console.log("the burger was devoured!");
-//                 location.reload();
-//             }
-//         );
-
-//     })
-
-// })
